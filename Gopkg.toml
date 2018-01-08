@@ -19,14 +19,7 @@
 #  name = "github.com/x/y"
 #  version = "2.4.0"
 
-
-[[constraint]]
-  name = "github.com/anothermemory/clock"
-  version = "0.1.0"
-
-[[constraint]]
-  name = "github.com/anothermemory/id"
-  version = "0.1.0"
+ignored = ["github.com/anothermemory/clock", "github.com/anothermemory/id"]
 
 [[constraint]]
   name = "github.com/pkg/errors"
