@@ -76,21 +76,21 @@ func TestBaseUnit_Title(t *testing.T) {
 func TestBaseUnit_Created(t *testing.T) {
 	u := unit.NewUnit(unit.OptionClockMock(createdTime, updatedTime))
 
-	assert.Equal(t, createdTime, u.Created())
+	assert.True(t, createdTime.Equal(u.Created()))
 
 	u.SetTitle("New title will not change created time")
 
-	assert.Equal(t, createdTime, u.Created())
+	assert.True(t, createdTime.Equal(u.Created()))
 }
 
 func TestBaseUnit_Updated(t *testing.T) {
 	u := unit.NewUnit(unit.OptionClockMock(createdTime, updatedTime))
 
-	assert.Equal(t, createdTime, u.Updated())
+	assert.True(t, createdTime.Equal(u.Updated()))
 
 	u.SetTitle("New title will change updated time")
 
-	assert.Equal(t, updatedTime, u.Updated())
+	assert.True(t, updatedTime.Equal(u.Updated()))
 }
 
 func TestBaseUnit_MarshalJSON(t *testing.T) {
@@ -110,8 +110,8 @@ func TestBaseUnit_UnmarshalJSON(t *testing.T) {
 	assert.Equal(t, "123", u.ID())
 	assert.Equal(t, "MyUnit", u.Title())
 	assert.Equal(t, unit.TypeUnit, u.Type())
-	assert.Equal(t, createdTime, u.Created())
-	assert.Equal(t, updatedTime, u.Updated())
+	assert.True(t, createdTime.Equal(u.Created()))
+	assert.True(t, updatedTime.Equal(u.Updated()))
 }
 
 func TestBaseUnit_UnmarshalJSON_MalformedJSON(t *testing.T) {
